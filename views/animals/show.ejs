@@ -1,0 +1,34 @@
+<%= myAnimal.name %> is a <%= myAnimal.type %>
+
+<p>Use this form to update this animal</p>
+
+<form action="/animals/<%= id %>" id="put-form">
+  <label for="animalName">Animal Name</label>
+  <input type="text" name="name" value="<%= myAnimal.name %>">
+
+  <label for="animalType">Animal Type</label>
+  <input type="text" name="type" value="<%= myAnimal.type %>">
+
+  <input type="button" value="Update this animal">
+</form>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+<script>
+  $('[type=button]').on('click', function(e) {
+    e.preventDefault();
+    var updateUrl = $(this).parent().attr('action');
+    var animalData = $(this).parent().serialize();
+    $.ajax({
+      method: 'PUT',
+      url: updateUrl,
+      data: animalData
+    }).done(function(data) {
+      // get data returned from the PUT route
+      console.log(data);
+    });
+  });
+</script>

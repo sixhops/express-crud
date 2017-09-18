@@ -1,0 +1,17 @@
+{
+  "name": "express-crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Steve Peters",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "nodemon": "^1.12.1"
+  }
+}

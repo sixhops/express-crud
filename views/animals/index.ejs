@@ -1,0 +1,39 @@
+<ul>
+  <% myAnimals.forEach(function(animal, id) { %>
+  <li><%= animal.name %> is a <%= animal.type %>
+    <a class="delete-link" href="/animals/<%= animal.name %>">Delete</a>
+  </li>
+  <% }); %>
+</ul>
+
+<p>Use this form to add a new animal</p>
+<form method="POST" action="/animals">
+  <label for="animalType">Type</label>
+  <input type="text" name="type">
+
+  <label for="animalName">Name</label>
+  <input id="animalName" type="text" name="name">
+
+  <input id="animalType" type="submit">
+</form>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+
+<script>
+  $('.delete-link').on('click', function(e) {
+    e.preventDefault();
+    var deleteUrl = $(this).attr('href');
+    $.ajax({
+      method: 'DELETE',
+      url: deleteUrl
+    }).done(function(data) {
+      // get data returned from the DELETE route
+      console.log(data);
+    });
+  });
+
+</script>
